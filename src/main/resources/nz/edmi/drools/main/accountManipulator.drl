@@ -1,0 +1,29 @@
+package nz.edmi.drools.main
+
+import nz.edmi.drools.domain.Account;
+
+rule "Print Opening Balance"
+salience 50
+when
+  $a : Account()
+then
+  System.out.println("Opening Balance = " + $a.getBalance());
+end
+
+rule "Print Closing Balance"
+salience -50
+when
+  $a : Account()
+then
+  System.out.println("Closing Balance = " + $a.getBalance());
+end
+
+
+rule "Increment"
+salience 0
+when
+  $a : Account()
+then
+  System.out.println("Incrementing");
+  $a.increment(10);
+end

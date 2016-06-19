@@ -1,0 +1,18 @@
+package nz.edmi.drools.main;
+
+import nz.edmi.drools.domain.Programmer;
+
+rule "Java means clever"
+when
+  $p : Programmer( favouriteLanguage == "Java")
+then
+  $p.setClever(true);
+end
+
+rule "Scala means clever"
+when
+  $p : Programmer( favouriteLanguage.equalsIgnoreCase("scala"))
+then
+  $p.setClever(true);
+end
+

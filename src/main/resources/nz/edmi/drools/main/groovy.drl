@@ -1,0 +1,10 @@
+package nz.edmi.drools.main
+
+import nz.edmi.drools.domain.Programmer;
+
+rule "Groovy means clever"
+when
+  $p : Programmer( favouriteLanguage.equalsIgnoreCase("groovy"))
+then
+  $p.setClever(true);
+end

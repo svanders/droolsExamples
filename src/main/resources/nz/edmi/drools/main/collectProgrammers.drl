@@ -1,0 +1,18 @@
+import nz.edmi.drools.domain.Programmer
+import java.util.List
+import java.util.ArrayList
+
+global java.util.Map<String, List<Programmer>> results;
+
+rule "Group programmers by language"
+when
+  $p : Programmer()
+then
+    String language = $p.getFavouriteLanguage();
+    List<Programmer> likeMindedProgrammers = (List) results.get(language);
+    if (likeMindedProgrammers == null) {
+      likeMindedProgrammers = new ArrayList();
+      results.put(language, likeMindedProgrammers);
+    }
+    likeMindedProgrammers.add($p);
+end
